@@ -9,7 +9,7 @@ optionsMenu () {
   echo "USAGE: `basename $0` <option>";
   echo;
   echo " 1. info  = Current track, artist, album info";
-  echo " 2. play = Play music"
+  echo " 2. go = Play music"
   echo " 3. pause = Pause music"
   echo " 4. next = Play next track"
   echo " 5. prev = Play previous track "
@@ -25,6 +25,7 @@ fi
 while [ $# -gt 0 ]; do
     arg=$1
     case $arg in
+      #DISPLAY NOW PLAYING INFO
         "info" ) state=`osascript -e 'tell application "iTunes" to player state as string'`
             echo "iTunes is currently $state:";
             if [ $state = "playing" ]; then
@@ -33,5 +34,9 @@ while [ $# -gt 0 ]; do
               echo "$track by $artist"
             fi
             break;;
+      #FIRE iTunes
+        "go"    ) echo "Starting iTunes";
+            osascript -e 'tell application "iTunes" to play';
+            break ;;
     esac
 done
