@@ -21,3 +21,17 @@ optionsMenu () {
 if [ $# = 0 ]; then
   optionsMenu;
 fi
+
+while [ $# -gt 0 ]; do
+    arg=$1
+    case $arg in
+        "status" ) state=`osascript -e 'tell application "iTunes" to player state as string'`
+            echo "iTunes is currently $state:";
+            if [ $state = "playing" ]; then
+              artist=`osascript -e 'tell application "iTunes" to artist of current track as string'`;
+              track=`osascript -e 'tell application "iTunes" to name of current track as string'`;
+              echo "$track by $artist"
+            fi
+            break;;
+    esac
+done
