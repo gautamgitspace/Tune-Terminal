@@ -10,7 +10,7 @@ optionsMenu () {
   echo;
   echo " 1. info  = Current track, artist, album info";
   echo " 2. go = Play music"
-  echo " 3. pause = Pause music"
+  echo " 3. x = Pause music"
   echo " 4. next = Play next track"
   echo " 5. prev = Play previous track "
   echo " 6. kill = Stop music "
@@ -37,6 +37,18 @@ while [ $# -gt 0 ]; do
       #FIRE iTunes
         "go"    ) echo "Starting iTunes";
             osascript -e 'tell application "iTunes" to play';
+            break ;;
+      #PAUSE iTunes
+        "x"     ) echo "Pausing iTunes";
+            osascript -e 'tell application "iTunes" to pause';
+            break ;;
+      #NEXT TRACK
+        "next"  ) echo "Track Switch - NEXT";
+            osascript -e 'tell application "iTunes" to next track';
+            break ;;
+      #PREVIOUS TRACK
+        "prev"  ) echo "Track Switch - PREV";
+            osascript -e 'tell application "iTunes" to previous track';
             break ;;
     esac
 done
