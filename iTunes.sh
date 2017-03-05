@@ -50,5 +50,13 @@ while [ $# -gt 0 ]; do
         "prev"  ) echo "Track Switch - PREV";
             osascript -e 'tell application "iTunes" to previous track';
             break ;;
+      #STOP iTunes
+        "kill"  ) echo "Stopping iTunes";
+        osascript -e 'tell application "iTunes" to stop';
+        break ;;
+      #QUIT iTunes
+        "q"     ) echo "Quitting iTunes";
+        osascript -e 'tell application "iTunes" to quit';
+        break ;;
     esac
 done
