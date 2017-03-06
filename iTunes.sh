@@ -58,5 +58,13 @@ while [ $# -gt 0 ]; do
         "q"     ) echo "Quitting iTunes";
         osascript -e 'tell application "iTunes" to quit';
         break ;;
+      #TRACKS
+        "tracks" )
+            if [ -n "$2" ]; then
+              osascript -e 'tell application "iTunes"' -e "set new_playlist to \"$2\" as string" -e " get name of every track in playlist new_playlist" -e "end tell";
+              break;
+            fi
+              osascript -e 'tell application "iTunes" to get name of every track in current playlist';
+              break ;;
     esac
 done
