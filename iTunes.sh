@@ -14,7 +14,8 @@ optionsMenu () {
   echo " 4. next = Play next track"
   echo " 5. prev = Play previous track "
   echo " 6. kill = Stop music "
-  echo " 7. tracks = Show currently listed tracks"
+  echo " 7. tracks = Show currently queued tracks"
+  echo " 8. tracks 'playlist name' = show tracks in the specified playlist"
   echo " 8. mix = shuffle currently playing list"
 }
 
