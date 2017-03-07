@@ -74,5 +74,11 @@ while [ $# -gt 0 ]; do
               echo "Switching to playlist '$2'!";
               osascript -e 'tell application "iTunes"' -e "set new_playlist to \"$2\" as string" -e "play playlist new_playlist" -e "end tell";
               break ;
+            else
+              echo "Your Playlists:";
+              osascript -e 'tell application "iTunes"' -e "set allPlaylists to (get name of every playlist)" -e "end tell";
+              break;
+            fi
+            break;;
     esac
 done
