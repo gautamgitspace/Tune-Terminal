@@ -17,6 +17,7 @@ optionsMenu () {
   echo " 7. tracks = Show currently queued tracks"
   echo " 8. tracks 'playlist name' = show tracks in the specified playlist"
   echo " 8. mix = shuffle currently playing list"
+  echo " 9. list = Show playlists entries"
 }
 
 if [ $# = 0 ]; then
@@ -67,5 +68,11 @@ while [ $# -gt 0 ]; do
             fi
               osascript -e 'tell application "iTunes" to get name of every track in current playlist';
               break ;;
+      #playlists
+        "list"  )
+            if [ -n "$2" ]; then
+              echo "Switching to playlist '$2'!";
+              osascript -e 'tell application "iTunes"' -e "set new_playlist to \"$2\" as string" -e "play playlist new_playlist" -e "end tell";
+              break ;
     esac
 done
