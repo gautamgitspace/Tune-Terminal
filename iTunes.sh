@@ -16,8 +16,9 @@ optionsMenu () {
   echo " 6. kill = Stop music "
   echo " 7. tracks = Show currently queued tracks"
   echo " 8. tracks 'playlist name' = show tracks in the specified playlist"
-  echo " 8. mix = shuffle currently playing list"
-  echo " 9. list = Show playlists entries"
+  echo " 9. mix = shuffle currently playing list"
+  echo " 10. nomix = set shuffle to OFF"
+  echo " 11. list = Show playlists entries"
 }
 
 if [ $# = 0 ]; then
@@ -68,7 +69,7 @@ while [ $# -gt 0 ]; do
             fi
               osascript -e 'tell application "iTunes" to get name of every track in current playlist';
               break ;;
-      #playlists
+      #PLAYLISTS
         "list"  )
             if [ -n "$2" ]; then
               echo "Switching to playlist '$2'!";
@@ -80,5 +81,14 @@ while [ $# -gt 0 ]; do
               break;
             fi
             break;;
+      #SHUFFLE MUSIC : TOGGLE - ON
+        "mix"   ) echo "Shuffle toggle : ON";
+        osascript -e 'tell application "iTunes" to set shuffle of current playlist to 1';
+        break;;
+      #SHUFFLE MUSIC : TOGGLE - OFF
+        "nomix" ) echo "Shuffle toggle : OFF";
+        osascript -e 'tell application "iTunes" to set shuffle of current playlist to 0';
+        break;;
+
     esac
 done
