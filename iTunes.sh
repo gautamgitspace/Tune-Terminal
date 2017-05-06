@@ -48,10 +48,16 @@ while [ $# -gt 0 ]; do
       #NEXT TRACK
         "next"  ) echo "Track Switch - NEXT";
             osascript -e 'tell application "iTunes" to next track';
+            artist=`osacript -e 'tell application "iTunes" to artist of current track as string'`;
+            track=`osacript -e 'tell application "iTunes" to name of current track as string'`;
+            echo $track by $artist
             break ;;
       #PREVIOUS TRACK
         "prev"  ) echo "Track Switch - PREV";
             osascript -e 'tell application "iTunes" to previous track';
+            artist=`osascript -e 'tell application "iTunes" to artist of current track as string'`;
+            track=`osascript -e 'tell application "iTunes" to name of current track as string'`;
+            echo $track by $artist
             break ;;
       #STOP iTunes
         "kill"  ) echo "Stopping iTunes";
@@ -82,13 +88,7 @@ while [ $# -gt 0 ]; do
             fi
             break;;
       #SHUFFLE MUSIC : TOGGLE - ON
-        "mix"   ) echo "Shuffle toggle : ON";
-        osascript -e 'tell application "iTunes" to set shuffle of current playlist to 1';
+  
         break;;
-      #SHUFFLE MUSIC : TOGGLE - OFF
-        "nomix" ) echo "Shuffle toggle : OFF";
-        osascript -e 'tell application "iTunes" to set shuffle of current playlist to 0';
-        break;;
-
     esac
 done
